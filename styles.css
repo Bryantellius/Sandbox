@@ -1,0 +1,14 @@
+.container{
+    background-color: red;
+    margin: 2rem auto;
+}
+.row{
+    background-color: green;
+}
+.col, .col-md-12{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blue;
+    border: 2px solid white;
+}
