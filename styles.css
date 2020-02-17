@@ -41,6 +41,13 @@ h1{
 .feedbackP{
     height: 2rem;
 }
+@keyframes progress{
+    0% {background-color: green;}
+    20% {background-color: yellow;}
+    25%{background-color: orange;}
+    50%{background-color: orangered;}
+    100%{background-color: red;}
+}
 .instructions{
     text-align: center;
     font-size: 20px;
@@ -63,4 +70,7 @@ h1{
   
   .glyphicon-remove {
     color : #CD2626
+  }
+  .targetKey{
+      font-size: 20px;
   }

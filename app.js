@@ -2,9 +2,9 @@ $('button').click(function(){
     $('.instructions').hide();
     $('.sentenceP').show();
     $('.feedbackP').show();
+    $('.targetKey').empty();
     
     // Global variables
-    let presses = 1;
     
     let sentences = ["We've always defined ourselves by the ability",
     "to overcome the impossible. And we count these moments.",
@@ -17,31 +17,29 @@ $('button').click(function(){
     "because our destiny lies above us. -Interstellar"]
     
     let whichSent = 0;
-    let sentEnd = sentences[whichSent].length;
-    let targetLet;
     let score;
     const numberOfWords = 80;
     let seconds = 0;
-    let minutes;
-    let numberOfMistakes = 0;
+    let minutes = 0;
     let isPlaying = true;
     let userSent;
     
     // Adds sentences to div#sentence
     $('.sentenceP').text(sentences[0]);
-    displayTarget();
-    
+      
     
     // Playing the game
-    // $(document).ready(function(){
-    //     alert('Welcome to Type-Faster, Master!\nType through the sentences with speed and accuracy.\n\nTime will start as soon as you click "Ok."')
-    // })
-    setInterval(startClock, 1000);
+    setInterval(displayTime, 1000);
         // Event listeners for shift key up or down, shows upper keyboard
         $(document).keydown(function(e){
             if(event.keyCode==16){
                 $('#keyboard-upper-container').show();
                 $('#keyboard-lower-container').hide();
+        
+                if(event.keyCode==08){
+                    backspace = true;
+                    return backspace;
+                }
                 event.preventDefault();
             }
         });
@@ -60,54 +58,39 @@ $('button').click(function(){
             target = e.which;
             // Adds .pressed class to key to highlight
             $('#'+event.keyCode).addClass('pressed');
-
-            userSent = [$('input').val()];
-            console.log(userSent[0].length + 'vs' + sentEnd);
-            // Sends target into displayFeedback
-            displayFeedback(target);
-            // Decides if at end of sentence, if true, load next sentence, if last sentence, initiate gameOver
-            if(userSent[0].length>=sentEnd-1){
-                whichSent++;
-                if(whichSent>sentences.length-1){
-                    gameOver();
-                    return;
-                }else{
-                    $('.sentenceP').text(sentences[whichSent]);
-                    $('.feedbackP').empty('span');
-                    $('.target-letterP').empty('span');
-                }
-                sentEnd = sentences[whichSent].length;
-                presses=0;
-                $('input').val('');
-            }
-            // Increments presses unless backspace pressed
-            if(event.keyCode==08){
-                presses--;
-            }else{
-                presses++;
-            }
-            // Displays next target letter
-            displayTarget();
-            
         });
         // End keypress listener
         
         // Start keyup listener
         $(document).keyup(function(){
         $('.key').removeClass('pressed');
+        userSent = [$('input').val()];
+        // Sends progress into displayFeedback
+        displayFeedback(target);
+        // Decides if at end of sentence, if true, load next sentence, if last sentence, initiate gameOver
+        if(userSent[0]===sentences[whichSent]){
+            whichSent++;
+            if(whichSent>sentences.length-1){
+                gameOver();
+                return;
+            }else{
+                $('.sentenceP').text(sentences[whichSent]);
+                $('.feedbackP').empty('span');
+                $('.target-letterP').empty('span');
+            }
+            sentEnd = sentences[whichSent].length;
+            presses=0;
+            $('input').val('');
+        }
         }); 
         
         
         // End keyup listener
     // Playing the game/
     
-    // Keeps track of time
-    function startClock(){
-        seconds++;
-    }
-    // Checks for correct key
-    function correctKey(target){
-        if(asciiTarget===target){
+    // Checks for sentence progress
+    function sentProgress(userSent){
+        if(userSent[0]===sentences[whichSent]){
             return true;
         }else{
             return false;
@@ -116,38 +99,42 @@ $('button').click(function(){
     
     // Displays feedback
     function displayFeedback(){
-        if(correctKey(target)){
-            $('.feedbackP').css('background-color', 'green').text(' ');
-        }else{
-            $('.feedbackP').css('background-color', 'red').text(' ');
-            numberOfMistakes++;
-        }
+        $('.feedbackP').text('');
+        $('.feedbackP').css({'background-color': 'green', 'animation-name': 'progress', 'animation-duration': '480s'})
     };
     
     // Displays target value in div#target-letter
-    function displayTarget(){
-        findTarget();
-        if(isPlaying===true){
-            $('.targetKey').text("'" + targetLet + "'");
+    function displayTime(){
+        if(10>seconds){
+            $('.targetKey').text(minutes+":0"+seconds);
+        }
+        else if(seconds>=59){
+            minutes++;
+            seconds=0;
+            $('.targetKey').text(minutes+":"+seconds);
+        } else {
+            seconds++;
+        $('.targetKey').text(minutes+":"+seconds);
+        }
+        seconds++;
+        if(!(isPlaying)){
+            clearInterval(displayTime);
+            $('.targetKey').empty();
         }
     }
-    
-    // Finds target letter from array sentences
-    function findTarget(){
-        targetLet = sentences[whichSent].substring(presses-1, presses);
-        asciiTarget = targetLet.charCodeAt();
-    }
-    
+
     // Game over
     function gameOver(){
         isPlaying = false;
-        clearInterval(startClock);
-        minutes = seconds*0.0166667;
-        score = Math.round((numberOfWords/minutes) - (1.25 * numberOfMistakes));
+        clearInterval(displayTime);
+        minutes = minutes + (seconds*0.0166667);
+        score = Math.round((numberOfWords/minutes));
         $('.sentenceP').hide();
         $('.feedbackP').hide();
-        $('.instructions').show().text('Game Over  ' + 'Score: ' + score);
-        $('.prompt-container').append($('<button class="btn btn-lg btn-primary d-block mx-auto my-1">Try Again</button>'));
+        $('.targetKey').hide();
+        $('input').val('');
+        $('.instructions').show().text('Game Over  ' + 'Score: ' + score + 'wpm');
+        $('.prompt-container').append($('<button class="btn btn-lg btn-primary mx-auto my-1">Try Again</button>'));
         $(document).off('keypress');
         // Reloads to initiate new game
         $('button').click(function(){
