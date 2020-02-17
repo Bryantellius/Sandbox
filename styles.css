@@ -1,14 +1,66 @@
 .container{
-    background-color: red;
-    margin: 2rem auto;
+    /* background-color: red; */
+    margin-top: 2rem;
+    padding-bottom: 4rem;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    box-shadow: 0 1rem 1rem darkgray;
 }
-.row{
+h1{
+    background-color: gray;
+}
+/* .row{
     background-color: green;
-}
-.col, .col-md-12{
+} */
+.col{
     display: flex;
+    padding: 0.33rem 0;
     justify-content: center;
     align-items: center;
-    background-color: blue;
-    border: 2px solid white;
+    background-color: rgb(235, 235, 235);
+    /* border: 2px solid white; */
 }
+.space{
+    padding-bottom: 1rem;
+}
+.key{
+    background-color: white;
+    margin: 0 0.10rem;
+    padding: 10px 15px;
+    border-radius: 15px;
+    box-shadow: 0 0.50rem lightgray;
+}
+.sentenceP, .feedbackP{
+    display: none;
+    text-align: center;
+    font-size: 20px;
+    background-color: rgb(225, 225, 225);
+    padding: 0 10px;
+    border-radius: 25px;
+}
+.feedbackP{
+    height: 2rem;
+}
+.instructions{
+    text-align: center;
+    font-size: 20px;
+    background-color: rgb(225, 225, 225);
+    padding: 0 10px;
+    border-radius: 25px;
+}
+.prompt-container>div{
+    margin: 0.25rem 0;
+}
+#keyboard-upper-container{
+    display: none;  
+}
+.pressed{
+    background-color: darkgrey;
+  }
+  .glyphicon-ok {
+    color: #1DA237
+  }
+  
+  .glyphicon-remove {
+    color : #CD2626
+  }
