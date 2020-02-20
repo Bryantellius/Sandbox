@@ -1,169 +1,38 @@
 <!DOCTYPE html>
-
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+  <title>Sandbox</title>
+</head>
+<body>
+  <div class="container">
+    <div class="jumbo-fluid">
+      <h1 class="title">What's Old is New</h1>
+    </div>
+    <ul class="row nav">
+      <li class="nav-item"><a href="" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="" class="nav-link">Photos</a></li>
+      <li class="nav-item"><a href="" class="nav-link">About</a></li>
+    </ul>
 
-        <title>Sandbox</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="styles.css">
-    </head>
-
-    <body>
-        <div class="container">
-          <div class="row title">
-            <h1 class="col">Type-Faster Master</h1>
-          </div>
-
-          <div class="row row-cols-1 justify-content-center prompt-container">
-            <div class="col-6">
-              <p class="instructions">Welcome to Type-Faster Master!
-                <br>Type the sentences in the input box.
-                <br>Click the button to begin!
-              </p>
-              <p class="col sentenceP"></p>
-              <p class="col feedbackP">Begin</p>
-            </div>
-          </div>
-
-          <div class="row justify-content-center my-1">
-            <div class="col-8"><input type="text" class="form-control" placeholder="Message"></div>
-          </div>
-
-          <div class="row targetKey justify-content-center py-1">
-            <button class="col-4 feedbackBtn btn btn-primary">Start</button>
-          </div>
-
-          <div class="row row-cols-1 justify-content-center text-center keyboard-container" id="keyboard-lower-container">
-            <div class="col keys-row">
-              <span class="key" id="96">`</span>
-              <span class="key" id="49">1</span>
-              <span class="key" id="50">2</span>
-              <span class="key" id="51">3</span>
-              <span class="key" id="52">4</span>
-              <span class="key" id="53">5</span>
-              <span class="key" id="54">6</span>
-              <span class="key" id="55">7</span>
-              <span class="key" id="56">8</span>
-              <span class="key" id="57">9</span>
-              <span class="key" id="48">0</span>
-              <span class="key" id="45">-</span>
-              <span class="key" id="61">=</span>
-          </div>
-          <div class="col keys-row">
-              <span class="key" id="113">q</span>
-              <span class="key" id="119">w</span>
-              <span class="key" id="101">e</span>
-              <span class="key" id="114">r</span>
-              <span class="key" id="116">t</span>
-              <span class="key" id="121">y</span>
-              <span class="key" id="117">u</span>
-              <span class="key" id="105">i</span>
-              <span class="key" id="111">o</span>
-              <span class="key" id="112">p</span>
-              <span class="key" id="91">[</span>
-              <span class="key" id="93">]</span>
-              <span class="key" id="92">\</span>
-          </div>
-          <div class="col keys-row">
-              <span class="key" id="97">a</span>
-              <span class="key" id="115">s</span>
-              <span class="key" id="100">d</span>
-              <span class="key" id="102">f</span>
-              <span class="key" id="103">g</span>
-              <span class="key" id="104">h</span>
-              <span class="key" id="106">j</span>
-              <span class="key" id="107">k</span>
-              <span class="key" id="108">l</span>
-              <span class="key" id="59">;</span>
-              <span class="key" id="39">'</span>
-          </div>
-          <div class="col keys-row">
-              <span class="key" id="122">z</span>
-              <span class="key" id="120">x</span>
-              <span class="key" id="99">c</span>
-              <span class="key" id="118">v</span>
-              <span class="key" id="98">b</span>
-              <span class="key" id="110">n</span>
-              <span class="key" id="109">m</span>
-              <span class="key" id="44">,</span>
-              <span class="key" id="46">.</span>
-              <span class="key" id="47">/</span>
-          </div>
-          <div class="col keys-row space">
-              <span class="key" id="32">Space</span>
-          </div>
-              
-        </div>
-        
-        <div class="row row-cols-1 justify-content-center text-center keyboard-container" id="keyboard-upper-container">
-            <div class="col keys-row">
-                <span class="key" id="126">~</span>
-                <span class="key" id="33">!</span>
-                <span class="key" id="64">@</span>
-                <span class="key" id="35">#</span>
-                <span class="key" id="36">$</span>
-                <span class="key" id="37">%</span>
-                <span class="key" id="94">^</span>
-                <span class="key" id="38">&</span>
-                <span class="key" id="42">*</span>
-                <span class="key" id="40">(</span>
-                <span class="key" id="41">)</span>
-                <span class="key" id="95">_</span>
-                <span class="key" id="43">+</span>
-            </div>
-            <div class="col keys-row">
-                <span class="key" id="81">Q</span>
-                <span class="key" id="87">W</span>
-                <span class="key" id="69">E</span>
-                <span class="key" id="82">R</span>
-                <span class="key" id="84">T</span>
-                <span class="key" id="89">Y</span>
-                <span class="key" id="85">U</span>
-                <span class="key" id="73">I</span>
-                <span class="key" id="79">O</span>
-                <span class="key" id="80">P</span>
-                <span class="key" id="123">{</span>
-                <span class="key" id="125">}</span>
-                <span class="key" id="124">|</span>
-            </div>
-            <div class="col keys-row">
-                <span class="key" id="65">A</span>
-                <span class="key" id="83">S</span>
-                <span class="key" id="68">D</span>
-                <span class="key" id="70">F</span>
-                <span class="key" id="71">G</span>
-                <span class="key" id="72">H</span>
-                <span class="key" id="74">J</span>
-                <span class="key" id="75">K</span>
-                <span class="key" id="76">L</span>
-                <span class="key" id="58">:</span>
-                <span class="key" id="34">"</span>
-            </div>
-            <div class="col keys-row">
-                <span class="key" id="90">Z</span>
-                <span class="key" id="88">X</span>
-                <span class="key" id="67">C</span>
-                <span class="key" id="86">V</span>
-                <span class="key" id="66">B</span>
-                <span class="key" id="78">N</span>
-                <span class="key" id="77">M</span>
-                <span class="key" id="60">&#60</span>
-                <span class="key" id="62">&#62</span>
-                <span class="key" id="63">?</span>
-            </div>
-            <div class="col keys-row space">
-                <span class="key" id="32">Space</span>
-            </div>
-        </div>
-      </div>
-      
+    <div class="row picturesDiv">
+      <div class="col-md-4"><img src="https://scontent-atl3-1.xx.fbcdn.net/v/t31.0-8/14918783_1147038125331454_5916740945296869259_o.jpg?_nc_cat=109&_nc_ohc=cULwyd6t9U0AX-3C-Li&_nc_ht=scontent-atl3-1.xx&oh=0abc71cbff19be299e1ad191011d75f7&oe=5EF77416" alt="" class="card-img"></div>
+      <div class="col-md-4"><img src="https://scontent-atl3-1.xx.fbcdn.net/v/t31.0-8/29744647_1647870948581500_1026070597732419477_o.jpg?_nc_cat=105&_nc_ohc=An58UWDwNSoAX-AZDwS&_nc_ht=scontent-atl3-1.xx&oh=dfcd291bec9e8aa309dd13dd23853656&oe=5EC7C1D0" alt="" class="card-img"></div>
+      <div class="col-md-4"><img src="https://scontent-atl3-1.xx.fbcdn.net/v/t31.0-8/11878865_903352513033351_7443115062566355590_o.jpg?_nc_cat=100&_nc_ohc=-Zt8tFaqxqcAX9Pn7YV&_nc_ht=scontent-atl3-1.xx&oh=252efb542c29b5e79a7225892b8a2516&oe=5EC6BF99" alt="" class="card-img"></div>
+      <div class="col-md-4"><img src="C:\Users\brbry_000\Pictures\iCloud Photos\Downloads\IMG_0299.jpg" alt="" class="card-img"></div>
+      <div class="col-md-4"><img src="C:\Users\brbry_000\Pictures\iCloud Photos\Downloads\IMG_0148.jpg" alt="" class="card-img"></div>
+      <div class="col-md-4"><img src="C:\Users\brbry_000\Pictures\iCloud Photos\Downloads\IMG_0242.jpg" alt="" class="card-img"></div>
+    </div>
+  </div>
 
 
-      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-      <script src="app.js"></script>
-    </body>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
 </html>
